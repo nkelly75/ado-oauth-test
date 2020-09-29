@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1 Token Results
+
+  if error
+    p Error: #{error}
+  else
+    table
+      tbody
+        tr
+          td Access Token
+          td
+            textarea( rows="8", cols="100", readonly="readonly" )
+              | #{tokenInfo.accessToken}
+        tr
+          td Token Type
+          td #{tokenInfo.tokenType}
+        tr
+          td Refresh Token
+          td
+            textarea( rows="8", cols="100", readonly="readonly" )
+              | #{tokenInfo.refreshToken}
+        tr
+          td Expires In
+          td #{tokenInfo.expiresIn}
+        tr
+          td Scope
+          td #{tokenInfo.scope}
+
+  br
+  a(href='/') Home
+  br
+  br
+  a(href='/devops') Call DevOps APIs

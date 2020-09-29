@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Azure DevOps OAuth Client Sample (ported to Node)
+  p
+    | Clicking 'Authorize' below will ensure you have authorized this application
+    | to call Azure DevOps APIs on your behalf. After authorizing, the application
+    | should have a token that can be used to call DevOps APIs.
+  a(href='/oauth/authorize') Authorize
+  br
+  br
+  a(href='/devops') Call DevOps APIs
+
+  footer
+    if displayName
+      p User: #{displayName}
+    else
+      p No user in session

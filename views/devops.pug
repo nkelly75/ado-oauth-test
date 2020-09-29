@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  h1 DevOps API calls
+
+  if error
+    p Error: #{error}
+
+  h2 Profile
+  if profile
+    table
+      tbody
+        tr
+          td Display Name
+          td #{profile.displayName}
+        tr
+          td Email
+          td #{profile.emailAddress}
+
+  h2 Projects
+  if projects
+    table
+      thead
+        tr
+          th Name
+          th Last Updated
+      tbody
+        each project in projects
+          tr
+            td #{project.name}
+            td #{project.lastUpdate}
+
+  h2 One 'tree' in one repo
+  if tree
+    table
+      tbody
+        tr
+          td Tree URL
+          td #{tree.url}
+        tr
+          td JSON response
+          td
+            textarea( rows="8", cols="100", readonly="readonly" )
+              | #{tree.json}
+
+  br
+  a(href='/') Home
