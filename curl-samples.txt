@@ -1,0 +1,31 @@
+# Get projects
+curl -sH 'Accept: application/json' -H "authorization: Bearer $TOKEN" https://app.vssps.visualstudio.com/org/_apis/projects | jq
+
+# Get repos in a project
+curl -sH 'Accept: application/json' -H "authorization: Bearer $TOKEN" https://dev.azure.com/org/testRepos/_apis/git/repositories | jq
+
+# Get a particular repo
+curl -sH 'Accept: application/json' -H "authorization: Bearer $TOKEN" https://dev.azure.com/org/_apis/git/repositories/repo-id | jq
+
+# Get items in that repo
+curl -sH 'Accept: application/json' -H "authorization: Bearer $TOKEN" https://dev.azure.com/org/project-id/_apis/git/repositories/repo-id/items | jq
+
+# Get one of those items
+curl -sH 'Accept: application/json' -H "authorization: Bearer $TOKEN" "https://dev.azure.com/org/project-id/_apis/git/repositories/repo-id/items?path=%2F&versionType=Branch&versionOptions=None" | jq
+
+# Includes a 'tree'
+https://dev.azure.com/org/project-id/_apis/git/repositories/repo-id/trees/tree-id
+
+curl -sH 'Accept: application/json' -H "authorization: Bearer $TOKEN" "https://dev.azure.com/org/project-id/_apis/git/repositories/repo-id/trees/tree-id" | jq
+
+# Includes treeEntries array with URLs like this
+https://dev.azure.com/org/project-id/_apis/git/repositories/repo-id/blobs/blob-id
+
+# Blob
+curl -sH 'Accept: application/json' -H "authorization: Bearer $TOKEN" "https://dev.azure.com/org/project-id/_apis/git/repositories/repo-id/blobs/blob-id" | jq
+
+# Paste into browser to download a file e.g.
+https://dev.azure.com/org/project-id/_apis/git/repositories/repo-id/blobs/blob-id
+
+# Blob in a repo
+curl -sH 'Accept: application/json' -H "authorization: Bearer $TOKEN" "https://dev.azure.com/org/project-id/_apis/git/repositories/repo-id/blobs/blob-id" | jq
